@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>زوسر - Zosser</title>
+
+  <!-- خط Tajawal -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* Reset بسيط */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-synthesis: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: #fff;
+      color: #222;
+      direction: rtl;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* الحاوية الرئيسية */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* الهيدر */
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* اسم الموقع */
+    .logo {
+      font-weight: 900;
+      font-size: 3.5rem;
+      color: #b8860b; /* لون ذهبي فاخر */
+      user-select: none;
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .logo span {
+      font-weight: 400;
+      font-size: 1.8rem;
+      display: block;
+      color: #444;
+      margin-top: 5px;
+      letter-spacing: 1px;
+    }
+
+    /* صورة التيشيرت */
+    .hero-img {
+      flex: 1 1 450px;
+      max-width: 450px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(184, 134, 11, 0.3);
+      animation: fadeInZoom 1.3s ease forwards;
+    }
+
+    /* نص الوصف */
+    .hero-text {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #555;
+      line-height: 1.5;
+      user-select: none;
+      margin-top: 20px;
+    }
+
+    /* زر التسوق */
+    .btn-shop {
+      margin-top: 40px;
+      background-color: #b8860b;
+      color: #fff;
+      border: none;
+      padding: 18px 50px;
+      border-radius: 40px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(184, 134, 11, 0.5);
+      user-select: none;
+    }
+
+    .btn-shop:hover {
+      background-color: #aa7a07;
+      box-shadow: 0 12px 30px rgba(170, 122, 7, 0.7);
+      transform: translateY(-3px);
+    }
+
+    /* قسم المميزات */
+    .features {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      margin-top: 80px;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      flex: 1 1 270px;
+      background-color: #fff8e1;
+      border-radius: 18px;
+      padding: 30px 25px;
+      box-shadow: 0 10px 25px rgba(184, 134, 11, 0.15);
+      transition: transform 0.3s ease;
+      cursor: default;
+      user-select: none;
+    }
+
+    .feature:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(184, 134, 11, 0.25);
+    }
+
+    .feature h3 {
+      color: #b8860b;
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .feature p {
+      color: #5c5c5c;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* معرض الصور */
+    .gallery {
+      margin-top: 90px;
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .gallery img {
+      width: 280px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      user-select: none;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 35px rgba(184, 134, 11, 0.4);
+    }
+
+    /* التقييمات */
+    .testimonials {
+      max-width: 700px;
+      margin: 100px auto 60px;
+      text-align: center;
+      font-style: italic;
+      color: #444;
+      font-size: 1.15rem;
+      user-select: none;
+    }
+
+    .testimonials blockquote {
+      border-right: 5px solid #b8860b;
+      background-color: #fff8e1;
+      padding: 25px 30px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 20px rgba(184, 134, 11, 0.15);
+    }
+
+    /* الرسوم المتحركة */
+    @keyframes fadeInZoom {
+      0% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* تجاوب بسيط */
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+      }
+      .hero-img,
+      .hero-text,
+      .logo {
+        max-width: 100%;
+        flex: none;
+      }
+
+      .features {
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .gallery img {
+        width: 100%;
+        max-width: 350px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        زوسر
+        <span>Zosser</span>
+      </div>
+
+      <img
+        src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80"
+        alt="تيشيرت راقٍ أنيق"
+        class="hero-img"
+      />
+
+      <div class="hero-text">
+        تيشيرت فاخر بقماش قطني 100%، تصميم أنيق يليق بذوقك الرفيع.<br />
+        مريح، عصري، ومتوفر بألوان متعددة.<br />
+        استرجاع مجاني خلال 14 يوم.
+        <button class="btn-shop" onclick="alert('شكراً لاهتمامك! سيتم التفعيل قريباً.')">
+          تسوق الآن
+        </button>
+      </div>
+    </header>
+
+    <section class="features" aria-label="مميزات المنتج">
+      <div class="feature">
+        <h3>خامات طبيعية 100%</h3>
+        <p>قطن نقي فائق الجودة يعطيك إحساس الراحة طوال اليوم.</p>
+      </div>
+
+      <div class="feature">
+        <h3>تصميم عصري أنيق</h3>
+        <p>مصمم بأحدث الأساليب مع الحفاظ على الكلاسيكية والفخامة.</p>
+      </div>
+
+      <div class="feature">
+        <h3>طباعة صديقة للبيئة</h3>
+        <p>نستخدم أحبار مائية عالية الجودة لا تؤثر على البيئة.</p>
+      </div>
+    </section>
+
+    <section class="gallery" aria-label="معرض الصور">
+      <img
+        src="https://images.unsplash.com/photo-1556909192-b8d7bdc564b1?auto=format&fit=crop&w=600&q=80"
+        alt="تصميم تيشيرت عصري 1"
+      />
+      <img
+        src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=600&q=80"
+        alt="تصميم تيشيرت عصري 2"
+      />
+      <img
+        src="https://images.unsplash.com/photo-1520975695646-7496e3a09b57?auto=format&fit=crop&w=600&q=80"
+        alt="تصميم تيشيرت عصري 3"
+      />
+    </section>
+
+    <section class="testimonials" aria-label="آراء العملاء">
+      <blockquote>
+        "أفضل تيشيرت اشتريته على الإطلاق، الجودة والتصميم فاقوا توقعاتي."
+      </blockquote>
+      <blockquote>
+        "تجربة شراء سهلة وسريعة، والتوصيل كان ممتازًا جدًا."
+      </blockquote>
+    </section>
+  </div>
+</body>
+</html>
